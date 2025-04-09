@@ -183,3 +183,17 @@ procedual memory.
 내이름은 경수야, 내이름 기억하니?
 
 tread_id : userid... 
+
+
+
+## Builder. 
+Crag -  - retrieve, grade, generate. 
+
+[text](https://build.langchain.com/)
+
+
+
+Crag 
+ToolUse
+Planning
+Reflection 

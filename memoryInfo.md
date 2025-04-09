@@ -68,3 +68,21 @@ graph TD
     Agent --> EpisodicMemory[일화 기억: 대화 이력]
     Agent --> SemanticMemory[의미 기억: RAG 지식 검색]
     Agent --> ProceduralMemory[절차 기억: Tool 사용 규칙]
+
+
+    🧠 실제 구현 시
+시스템	메모리 유형	비고
+LangChain	모두 지원 가능	다양한 Memory 모듈 사용
+LangGraph	주로 Procedural + Episodic	상태 기반 흐름 설계
+AutoGen	Procedural 강조	Tool 선택 기반 루틴화
+OpenAI Assistant API	Semantic 기반 fine-tune + Episodic 컨텍스트	
+✅ 결론
+LLM 기반 에이전트의 인텔리전스를 강화하려면,
+
+Semantic: 지식 검색과 RAG
+
+Episodic: 사용자 맥락 유지
+
+Procedural: 작업 자동화 및 일관된 처리
+
+이 세 가지 메모리 시스템을 조합해 설계하는 것이 핵심입니다.

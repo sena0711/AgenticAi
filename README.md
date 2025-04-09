@@ -121,7 +121,65 @@ Bedrock 에 있는 agent capablitiy
 Lang graph 로 use case 가능. 
 
 Not first..
-기존의 솔루션의 성능향상을 위해 사용하는것. 
-어렵게 한다고해서 잘한다고 생각하지 않는다. 
-간단하게. 
-구분하지 말고 문제를 풀자. 
+1. 기존의 솔루션의 성능향상을 위해 사용하는것. 
+2. 어렵게 한다고해서 잘한다고 생각하지 않는다. 
+3. 간단하게. 
+4. 구분하지 말고 문제를 풀자. 
+
+''
+## Reasoning in Agent AI
+
+Bedlock langchain. 
+
+
+
+
+✅ Amazon Bedrock과 LangChain의 관계
+항목	설명
+Amazon Bedrock	AWS에서 제공하는 멀티 LLM 서비스 플랫폼입니다. 여러 LLM (Anthropic Claude, Meta LLaMA, Mistral, Amazon Titan 등)을 API로 접근 가능하게 해주는 호스팅 인프라입니다.
+LangChain	LLM 기반 애플리케이션을 만들기 위한 Python/JS 라이브러리입니다. 여러 LLM, 도구, 체인, 프롬프트 등을 조합하여 복잡한 로직을 구현할 수 있도록 도와줍니다.
+🤝 관계
+LangChain은 Bedrock을 LLM 프로바이더 중 하나로 사용할 수 있습니다.
+
+즉, LangChain 안에서 Bedrock 모델을 쓸 수 있는 것이지, Bedrock 안에 LangChain이 내장된 것은 아닙니다.
+
+🔧 예시 구조
+plaintext
+Copy
+Edit
+[Your LangChain App]
+        |
+        v
+[LLM Wrapper (LangChain)]
+        |
+        v
+[Amazon Bedrock API]
+        |
+        v
+[Claude / Titan / LLaMA 등]
+LangChain의 LLM wrapper에서 Bedrock을 backend로 설정하면 Amazon LLM을 사용할 수 있는 구조예요.
+
+
+
+
+설계. 
+
+
+tool use, tavily 인터넷 검색, 도서 정보 조회 (외부 API ) , 날씨 정보 조회 (외부 api) , Code Interpreter 사용하기 , Code Drawer..
+
+Riza - sandbox...안전하게 그래프를 그리는일을 수행할수 있음. 
+
+코드는 누가 만들었나 LLM 
+
+build chat agent with history. 
+checkpoint= checkpointer store= memorystore 
+느려짐
+
+
+semanitic memory
+episodic memory
+procedual memory. 
+
+내이름은 경수야, 내이름 기억하니?
+
+tread_id : userid... 

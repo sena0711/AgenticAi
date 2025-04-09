@@ -109,3 +109,19 @@ Scale well with data
 
 Work naturally with Transformers
 
+1. RAG  가져온 문서에 질문에 정답이 없을때? -> 재질문 재 답변. 
+2. Corrective RAG 질문의 답이 저장소에 없을때? -> 다시보고 웹에서 검색. 
+
+3. Text2SQL - ㅡmuti agent , reflection , tool use  LangGraph+Text2SQL
+4. Text2Chart (text to image) - step task decomposer (planning)-> tooluse -> reflection -> retouch prompt.
+5. Text2Code - ? 
+
+
+Bedrock 에 있는 agent capablitiy  
+Lang graph 로 use case 가능. 
+
+Not first..
+기존의 솔루션의 성능향상을 위해 사용하는것. 
+어렵게 한다고해서 잘한다고 생각하지 않는다. 
+간단하게. 
+구분하지 말고 문제를 풀자. 

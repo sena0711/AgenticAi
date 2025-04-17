@@ -126,3 +126,15 @@ LangChain은 **LLM 응용의 기초 체계**를 제공하지만, 실제 서비�
 
 LangGraph, RAG 시스템, Tool 호출 등을 적절히 조합함으로써 더욱 강력하고 실용적인 AI 시스템을 구성할 수 있습니다.
 
+graph TD
+    A[🧑 사용자 질문 입력] --> B[🧠 ReAct Agent 실행]
+    B --> C[💭 Thought: 할 일 추론]
+    C --> D[👀 Observation: 상태/문맥 확인]
+    D --> E[🔧 Action: Tool 선택 및 실행]
+    E --> F[📥 Tool 결과 반환]
+    F --> G[🧠 다음 Thought 생성]
+
+    G --> H{✅ 종료 조건 만족?}
+    H -- 아니오 --> C
+    H -- 예 --> I[📝 최종 응답 생성]
+    I --> J[📤 사용자에게 응답 반환]

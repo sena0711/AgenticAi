@@ -16,6 +16,20 @@ LangChain과 LangGraph는 모두 LLM(대형 언어 모델)을 활용한 애플�
 | 시각화 | 제한적 | 그래프 시각화 가능 (Mermaid 등) |
 | 주요 활용 | 프롬프트 템플릿, Tool 호출, 메모리 관리 | 분기 처리, 에이전트 협업, Reflection Loop 설계 |
 
+# 🧩 LangChain vs LangGraph 비교
+
+| 항목           | LangChain                                   | LangGraph                                        |
+|----------------|---------------------------------------------|--------------------------------------------------|
+| **라이브러리명** | `langchain`                                | `langgraph`                                       |
+| **설치 명령어**  | `pip install langchain`                   | `pip install langgraph`                          |
+| **의존성**       | 자체 체인/에이전트/Tool 등 구성             | `langchain`을 내부적으로 사용할 수도 있음        |
+| **구조**        | 체인(Chain), 툴(Tool), 에이전트(Agent), 메모리 등 모듈화 | 노드(Node), 엣지(Edge), 상태(State) 기반 그래프 |
+| **상호 운용성**  | LangChain만으로 충분한 경우가 많음          | LangGraph에서 LangChain 객체 사용 가능           |
+
+> ✅ LangGraph는 복잡한 상태 기반 흐름 제어나 멀티 에이전트 협업 설계에 적합하며,  
+> LangChain은 간단한 체인 구성과 도구 연결에 유리합니다.
+
+
 ---
 
 ## 🧠 각각의 특징 요약
@@ -52,6 +66,22 @@ graph TD
 ```
 
 ---
+
+## LangChain 기반 ReAct Agent 워크플로우
+
+graph TD
+    A[🧑 사용자 질문 입력] --> B[🧠 ReAct Agent 실행]
+    B --> C[💭 Thought: 할 일 추론]
+    C --> D[👀 Observation: 상태/문맥 확인]
+    D --> E[🔧 Action: Tool 선택 및 실행]
+    E --> F[📥 Tool 결과 반환]
+    F --> G[🧠 다음 Thought 생성]
+
+    G --> H{✅ 종료 조건 만족?}
+    H -- 아니오 --> C
+    H -- 예 --> I[📝 최종 응답 생성]
+    I --> J[📤 사용자에게 응답 반환]
+
 
 ## ✅ 정리
 

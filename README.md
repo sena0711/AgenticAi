@@ -197,3 +197,142 @@ Crag
 ToolUse
 Planning
 Reflection 
+
+
+## Why multi agent
+- multi agent superviser
+- hierarchial agent teams
+- 
+## Deep research agent 
+-  planning (claude) -> Draft -> Research Agent (claude)
+-  plan node -> execution_node -> revise answers 
+-  reflect node -> revise nose
+-  
+graph TD
+    Q[💬 사용자 질문] --> D[🔍 Decompose]
+    D --> R1[🌐 Retrieve #1]
+    D --> R2[🌐 Retrieve #2]
+    R1 & R2 --> A[🧠 Analyze]
+    A --> S[📑 Synthesize]
+    S --> C[🕵️ Verify & Refine]
+    C --> F[✅ Final Answer]
+
+# 🤖 Multi-Agent Collaboration 구현 방법
+
+-  multi agent supervisor
+-  langraph supeervisor
+-  langgraph swarm 
+
+멀티에이전트 시스템은 하나의 LLM 에이전트로는 해결하기 어려운 복잡한 문제를, **역할 분담된 여러 에이전트가 협력**하여 해결하는 구조입니다.
+
+---
+
+## 🧱 기본 구성 요소
+
+| 구성 요소 | 설명 |
+|-----------|------|
+| 🧠 **Supervisor (Router Agent)** | 사용자 요청을 이해하고, 알맞은 에이전트에게 작업을 분배 |
+| 🔍 **Search Agent** | 웹 또는 문서 기반 정보 검색을 수행 |
+| ☁️ **Weather Agent** | 날씨 API를 통해 실시간 기상 정보 제공 |
+| 👨‍💻 **Code Agent** | 코드 생성, 수정, 디버깅 등을 담당 |
+| 📊 **Data Agent (선택)** | 데이터 분석 및 시각화 작업 처리 |
+
+---
+
+## 🏗️ 프레임워크 예: Bedrock + LangChain / LangGraph
+
+Amazon Bedrock은 다양한 LLM들을 통합 제공하며, LangChain 또는 LangGraph와 함께 사용하면 **에이전트간 협력 흐름을 선언적으로 구성**할 수 있습니다.
+
+### LangGraph 기반 멀티에이전트 예시
+
+
+graph TD
+    U[💬 사용자 입력]
+    U --> R[🧠 Router Agent]
+
+    R -->|코드 요청| CA[👨‍💻 Code Agent]
+    R -->|날씨 요청| WA[☁️ Weather Agent]
+    R -->|검색 요청| SA[🔍 Search Agent]
+
+    CA --> RA[📦 결과 집계]
+    WA --> RA
+    SA --> RA
+    RA --> F[✅ 최종 응답]
+
+
+
+
+# Reasoning  model 필요 이유  
+
+# MCP
+MCP란? (Multi-Context Prompting 또는 Multi-Agent Control Protocol)
+1. Multi-Context Prompting (MCP) – [🔎 LLM 활용 관점]
+여러 프롬프트 문맥(context) 또는 지식 흐름을 하나의 실행 맥락에서 함께 처리하도록 설계하는 기법.
+
+🧩 예:
+
+사용자 프로파일 + 과거 대화 + 현재 질문 → LLM 입력으로 통합
+
+다중 에이전트의 관점(예: 연구자 + 디버거 + 요약가)을 하나의 LLM 응답에 포함시키기
+
+🧠 왜 중요해?
+
+컨텍스트 분리보다 풍부한 reasoning 가능
+
+"역할 기반 협업"이 한 번의 프롬프트 안에서 실행됨
+
+
+
+# AI 에이전트 아키텍처 설계 단계"
+"AI 에이전트 아키텍처 설계 단계"**에 해당해요.
+아래처럼 구분해볼 수 있어요:
+
+1. 문제 정의 단계
+유저가 어떤 질문을 하고
+
+어떤 종류의 정보를 다루고
+
+어떤 결과를 기대하는가?
+
+2. 시스템 아키텍처 설계
+➡️ 당신이 집중하고 있는 부분
+
+어떤 에이전트 역할이 필요한가?
+(예: SearchAgent, CodeAgent, CriticAgent)
+
+어떤 흐름 제어 구조가 필요한가?
+(예: LangGraph Supervisor, Swarm 구조, MCP)
+
+어떤 Memory 전략을 쓸 것인가?
+(예: Episodic, Semantic 구분 및 저장 위치)
+
+Tool 사용 여부와 종류
+(API 호출, 계산기, DB, etc.)
+
+Reasoning 방식
+(ReAct, CoT, Self-Reflective 등)
+
+LLM 응답의 품질 관리 전략
+(Reflection loop, Voting agent 등)
+
+3. 실제 구현
+LangGraph 코드로 각 노드 작성
+
+에이전트와 툴 연결
+
+상태 저장소(state store) 설계
+
+토큰 예산 최적화 포함
+
+4. 테스트 & 디버깅
+멀티턴 테스트
+
+실패 케이스 로그 저장 및 개선
+
+📌 요약하자면:
+지금 이야기하신 건 모두 **"LLM 기반 에이전트 시스템의 아키텍처 설계"**에 해당합니다.
+즉, 코드를 짜기 전에 "어떻게 짤 것인가?"를 계획하고 설계하는 과정이에요.
+
+원하신다면 지금까지 이야기하신 요소들을 **하나의 구조도나 시스템 설계 문서(.md or Mermaid)**로 정리해드릴게요.
+예: 🧠 LLM 기반 Multi-Agent 시스템 설계 아키텍처 정리.md
+
